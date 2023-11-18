@@ -47,3 +47,6 @@ try {
 } catch (error) {
   console.log(error.message);
 }
+
+// Export the Express API
+module.exports = app;
