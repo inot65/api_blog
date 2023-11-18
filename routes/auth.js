@@ -27,8 +27,6 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({username: req.body.username});
 
-    console.log(user.username);
-
     // verific daca exista userul cu numele transmis
     !user && res.status(400).json('Wrong credentials!');
 
