@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "functions": {
-    "/*": {
-      "maxDuration": 30
+  "functions": [
+    {
+      "/*": {
+        "maxDuration": 30
+      }
     }
-  },
+  ],
   "builds": [
     {
       "src": "index.js",
@@ -15,6 +17,6 @@
     {
       "src": "/(.*)",
       "dest": "index.js"
-    }    
+    }
   ]
 }

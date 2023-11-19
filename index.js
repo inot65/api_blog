@@ -7,12 +7,17 @@ const postRoute = require('./routes/posts');
 const categoryRoute = require('./routes/categories');
 const multer = require('multer');
 const path = require('path');
+const cors = require('cors');
 
 dotenv.config();
 
 const app = express();
+
 // permite sa trimita datele din body in format JSON
 app.use(express.json());
+
+// folosesc CORS
+app.use(cors());
 
 const conectareMongoDb = async () => {
   try {
