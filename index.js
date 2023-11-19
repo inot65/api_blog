@@ -16,7 +16,7 @@ app.use(express.json());
 
 try {
   mongoose.connect(process.env.MONGO_URL);
-  // console.log('Conectat la baza de date!');
+  console.log('Conectat la baza de date!');
 
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -39,10 +39,13 @@ try {
   app.use('/api/users', userRoute);
   app.use('/api/posts', postRoute);
   app.use('/api/categories', categoryRoute);
+  app.get('/', (req, res) => {
+    res.send('My API running ! 🥳')
+  })
 
   app.listen('5000', () => {
     // pornesc serverul
-    // console.log('Backend-ul ruleaza pe portul 5000...');
+    console.log('Backend-ul ruleaza pe portul 5000...');
   });
 } catch (error) {
   console.log(error.message);
