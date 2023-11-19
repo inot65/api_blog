@@ -11,7 +11,7 @@ const path = require('path');
 dotenv.config();
 
 const app = express();
-// // permite sa trimita datele din body in format JSON
+// permite sa trimita datele din body in format JSON
 app.use(express.json());
 
 const conectareMongoDb = async ()=> {
@@ -21,7 +21,6 @@ const conectareMongoDb = async ()=> {
   } catch (error) {
     console.log(error)
   }
-
 }
 conectareMongoDb();
 
@@ -35,7 +34,7 @@ const storage = multer.diskStorage({
     });
 
 
-//   // pentru incarcarea unui singur fisier
+// pentru incarcarea unui singur fisier
   const upload = multer({storage: storage});
   app.post('/api/upload', upload.single('file'), (req, res) => {
     res.status(200).json('Fisierul a fost incarcat!');
@@ -57,7 +56,7 @@ try {
   })
   
   app.get('/', (req, res) => {
-    res.send('Hey this is my API running 🥳 ', process.env.MONGO_URL)
+    res.send('Hey this is my API running 🥳 '+ process.env.MONGO_URL)
   })
   
   app.get('/about', (req, res) => {
