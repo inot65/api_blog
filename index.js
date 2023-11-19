@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/auth');
@@ -11,6 +10,7 @@ const path = require('path');
 
 dotenv.config();
 
+const app = express();
 // // permite sa trimita datele din body in format JSON
 // app.use(express.json());
 
@@ -56,9 +56,8 @@ dotenv.config();
 
 
 // index.js
-const express = require('express')
+// const express = require('express')
 
-// const app = express()
 const PORT = 4000
 
 app.listen(PORT, () => {
