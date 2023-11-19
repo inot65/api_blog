@@ -12,7 +12,9 @@ dotenv.config();
 
 const app = express();
 // // permite sa trimita datele din body in format JSON
-// app.use(express.json());
+app.use(express.json());
+mongoose.connect(process.env.MONGO_URL);
+  console.log('Conectat la baza de date!');
 
 // try {
 //   mongoose.connect(process.env.MONGO_URL);
