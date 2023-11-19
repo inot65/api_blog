@@ -14,13 +14,17 @@ const app = express();
 // // permite sa trimita datele din body in format JSON
 app.use(express.json());
 
-try {
-  await mongoose.connect(process.env.MONGO_URL);
-    console.log('Conectat la baza de date!');
-  
-} catch (error) {
-  console.log(error)
+const conectareMongoDb = async ()=> {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+      console.log('Conectat la baza de date!');
+    
+  } catch (error) {
+    console.log(error)
+  }
+
 }
+conectareMongoDb();
 
 // try {
 //   mongoose.connect(process.env.MONGO_URL);
