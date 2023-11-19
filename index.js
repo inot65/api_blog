@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 try {
-  mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(process.env.MONGO_URL);
     console.log('Conectat la baza de date!');
   
 } catch (error) {
