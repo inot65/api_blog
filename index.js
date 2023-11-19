@@ -69,7 +69,7 @@ try {
 const PORT = 4000
 
 app.listen(PORT, () => {
-  console.log(`API listening on PORT ${PORT} `)
+  console.log(`API listening on PORT ${PORT} ${process.env.MONGO_URL}`)
 })
 
 app.get('/', (req, res) => {
