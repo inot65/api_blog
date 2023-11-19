@@ -56,12 +56,9 @@ try {
   })
   
   app.get('/', (req, res) => {
-    res.send('Hey this is my API running 🥳 '+ process.env.MONGO_URL)
+    res.send('Hey this is my API running 🥳 ')
   })
-  
-  app.get('/about', (req, res) => {
-    res.send('This is my about route..... ')
-  })
+
   
 } catch (error) {
   console.log(error)
