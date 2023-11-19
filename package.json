@@ -16,6 +16,9 @@
   "scripts": {
     "start": "nodemon index.js"
   },
+  "engines": {
+    "node": ">=16.14.1"
+  },
   "author": "toniDev",
   "license": "ISC"
 }
