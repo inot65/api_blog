@@ -20,11 +20,11 @@ app.use(express.json());
 app.use(cors());
 
 // ce fac la conectare/deconectare MongoDB
-mongoose.connection.on("disconnected", () => {
-  console.log("MongoDB deconectat...");
+mongoose.connection.on('disconnected', () => {
+  console.log('MongoDB deconectat...');
 });
-mongoose.connection.on("connected", () => {
-  console.log("Conectat la baza de date!");
+mongoose.connection.on('connected', () => {
+  console.log('Conectat la baza de date!');
 });
 
 const conectareMongoDb = async () => {
@@ -35,23 +35,22 @@ const conectareMongoDb = async () => {
   }
 };
 
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'images');
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'images');
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, req.body.name);
+//   },
+// });
 
 // pentru incarcarea unui singur fisier
-const upload = multer({storage: storage});
-app.post('/api/upload', upload.single('file'), (req, res) => {
-  res.status(200).json('Fisierul a fost incarcat!');
-});
-// locatia unde sunt stocate fisiere imagine
-app.use('/images', express.static(path.join(__dirname, '/images')));
+// const upload = multer({storage: storage});
+// app.post('/api/upload', upload.single('file'), (req, res) => {
+//   res.status(200).json('Fisierul a fost incarcat!');
+// });
+// // locatia unde sunt stocate fisiere imagine
+// app.use('/images', express.static(path.join(__dirname, '/images')));
 
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
