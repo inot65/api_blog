@@ -19,15 +19,22 @@ app.use(express.json());
 // folosesc CORS
 app.use(cors());
 
+// ce fac la conectare/deconectare MongoDB
+mongoose.connection.on("disconnected", () => {
+  console.log("MongoDB deconectat...");
+});
+mongoose.connection.on("connected", () => {
+  console.log("Conectat la baza de date!");
+});
+
 const conectareMongoDb = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
-    console.log('Conectat la baza de date!');
   } catch (error) {
     console.log(error);
   }
 };
-conectareMongoDb();
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -51,12 +58,14 @@ app.use('/api/users', userRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/categories', categoryRoute);
 
-const PORT = 80;
+const PORT = 5000;
 
 try {
   app.listen(PORT, () => {
     console.log(`API listening on PORT ${PORT}`);
   });
+  // conectare la baza de date
+  conectareMongoDb();
 
   app.get('/', (req, res) => {
     res.send('Hey this is my API running 🥳 ');
