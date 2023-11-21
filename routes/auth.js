@@ -28,7 +28,9 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({username: req.body.username});
 
     // verific daca exista userul cu numele transmis
-    !user && res.status(400).json('Wrong credentials!');
+    if (!user) {
+      return res.status(400).json('Wrong credentials!');
+    }
 
     // verific ca parola transmisa este ok
 
@@ -36,7 +38,9 @@ router.post('/login', async (req, res) => {
       req.body.password,
       user.password
     );
-    !validatedPassword && res.status(400).json('Wrong credentials!');
+    if (!validatedPassword) {
+      return res.status(400).json('Wrong credentials!');
+    }
 
     const {password, ...other} = user._doc;
     // user este validat, pot trimite inapoi userul care s-a logat
